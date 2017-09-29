@@ -125,6 +125,9 @@ public class RegisterActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
+                    Intent intent = new Intent(RegisterActivity.this, WaiterDashBoard.class);
+                    startActivity(intent);
+                    finish();
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
@@ -174,7 +177,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                startActivity(new Intent(RegisterActivity.this, CheifOrderList.class));
+                                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                                 finish();
 
                             }
